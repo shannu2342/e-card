@@ -21,7 +21,7 @@ const subSections: Record<string, string[]> = {
 };
 
 const Education = () => {
-  const [activeTab, setActiveTab] = useState("schools");
+  const [activeTab, setActiveTab] = useState<string | null>(null);
   const [activeSub, setActiveSub] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [payment, setPayment] = useState<{ open: boolean; title: string; amount?: string; details: { label: string; value: string }[]; type: "payment" | "booking" | "registration" }>({
@@ -94,7 +94,7 @@ const Education = () => {
     });
   };
 
-  const activeSubsections = subSections[activeTab] || [];
+  const activeSubsections = activeTab ? subSections[activeTab] || [] : [];
   const hasSubsections = activeSubsections.length > 0;
   const currentSub = activeSub;
   const canShowData = Boolean(activeTab && (!hasSubsections || currentSub));
@@ -107,17 +107,22 @@ const Education = () => {
         subtitle="Schools, Colleges, Skill Courses & Digital Learning"
         color="bg-sector-education"
         tabs={mainTabs}
-        activeTab={activeTab}
+        activeTab={activeTab ?? ""}
         onTabChange={handleTabChange}
       />
 
-      {hasSubsections && currentSub && (
+      {activeTab && (
         <div className="mb-4 flex flex-wrap gap-2">
           <Button
             size="sm"
             variant="outline"
             onClick={() => {
-              setActiveSub(null);
+              if (hasSubsections && currentSub) {
+                setActiveSub(null);
+              } else {
+                setActiveTab(null);
+                setActiveSub(null);
+              }
               setSearch("");
             }}
           >
@@ -127,11 +132,8 @@ const Education = () => {
       )}
 
       {/* Sub-Tabs (Tree Structure UI) */}
-      {hasSubsections && (
+      {activeTab && hasSubsections && (
         <div className="mb-6 flex flex-wrap gap-3 animate-in slide-in-from-left duration-300">
-          <div className="flex items-center gap-1 rounded-lg bg-muted/30 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-            <ChevronRight className="h-3 w-3" /> Options
-          </div>
           {activeSubsections.map(sub => (
             <button
               key={sub}

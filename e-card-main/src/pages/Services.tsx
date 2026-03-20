@@ -86,9 +86,6 @@ const Services = () => {
 
       {activeTab && hasSubsections && (
         <div className="flex flex-wrap gap-3 mb-6 animate-in slide-in-from-left duration-300">
-          <div className="flex items-center gap-1 text-muted-foreground bg-muted/30 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider">
-            <ChevronRight className="h-3 w-3" /> Options
-          </div>
           {activeSubsections.map(sub => (
             <button
               key={sub}
@@ -110,18 +107,6 @@ const Services = () => {
       )}
 
       <div className="mt-8">
-        {!activeTab && (
-          <div className="rounded-2xl border border-dashed bg-card p-8 text-center text-sm text-muted-foreground">
-            Step 1: Choose one option above.
-          </div>
-        )}
-
-        {activeTab && hasSubsections && !currentSub && (
-          <div className="rounded-2xl border border-dashed bg-card p-8 text-center text-sm text-muted-foreground">
-            Step 2: Select an option to continue.
-          </div>
-        )}
-
         {canShowData && (activeTab === "Booking System" ? (
           <div className="space-y-6">
              {currentSub === "Schedule Service" ? (
