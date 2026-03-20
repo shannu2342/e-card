@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 97%;
+    --foreground: 160 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
+    --primary: 152 55% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 80% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 40 20% 93%;
+    --muted-foreground: 160 10% 45%;
+    --accent: 210 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 152 55% 33%;
+    --radius: 0.75rem;
+
+    --sector-education: 25 90% 55%;
+    --sector-grocery: 152 55% 40%;
+    --sector-business: 210 70% 50%;
+    --sector-health: 0 70% 55%;
+    --sector-electronics: 250 60% 55%;
+    --sector-agriculture: 85 55% 40%;
+    --sector-services: 35 80% 50%;
+    --sector-training: 320 60% 50%;
+    --sector-employment: 190 60% 45%;
+
+    --sidebar-background: 152 30% 15%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 152 55% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 25% 22%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 152 20% 25%;
+    --sidebar-ring: 152 55% 45%;
+
+    --hero-glow: 152 60% 25%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .sector-card {
+    @apply rounded-2xl border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-primary/20;
+  }
+
+  .glass {
+    @apply bg-card/70 backdrop-blur-xl border border-border/50;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(152 55% 28%), hsl(152 55% 38%), hsl(180 45% 30%));
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--secondary)), hsl(30 90% 65%));
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-delay {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .stagger-fade-in {
+    opacity: 0;
+    animation: stagger-fade 0.6s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(152 55% 33% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(152 55% 33% / 0.4); }
+}
+
+@keyframes stagger-fade {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-border {
+  position: relative;
+}
+
+.shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, hsl(152 55% 45% / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 2px;
+}
