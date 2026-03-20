@@ -41,13 +41,13 @@ const Index = () => {
         </div>
 
         <div className="container relative z-10 text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md shadow-xl pulse-glow">
+          <div className="mx-auto mb-6 h-16 w-16 overflow-hidden rounded-2xl bg-white/20 backdrop-blur-md shadow-xl pulse-glow">
             <img
               src={BRAND_LOGO_SRC}
               alt="SVCDA logo"
               width={48}
               height={48}
-              className="h-12 w-12 rounded-xl object-cover"
+              className="h-full w-full origin-center scale-[3.8] object-contain"
               decoding="async"
             />
           </div>
@@ -189,14 +189,16 @@ const Index = () => {
         <div className="container">
           <div className="flex flex-col items-center gap-8">
             <div className="flex items-center gap-3 scale-110">
-              <img
-                src={BRAND_LOGO_SRC}
-                alt="SVCDA logo"
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-2xl object-cover shadow-lg shadow-primary/20 rotate-3"
-                decoding="async"
-              />
+              <div className="h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-primary/20 rotate-3">
+                <img
+                  src={BRAND_LOGO_SRC}
+                  alt="SVCDA logo"
+                  width={48}
+                  height={48}
+                  className="h-full w-full origin-center scale-[3.4] object-contain"
+                  decoding="async"
+                />
+              </div>
               <div>
                 <p className="font-display text-lg font-bold tracking-tight">Small Village & City</p>
                 <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Development Agency</p>

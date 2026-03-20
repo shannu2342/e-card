@@ -34,14 +34,16 @@ const Login = () => {
     <div className="flex min-h-[80vh] items-center justify-center px-4">
       <div className="w-full max-w-md rounded-xl border bg-card p-8 shadow-lg">
         <div className="mb-6 flex flex-col items-center gap-2">
-          <img
-            src={BRAND_LOGO_SRC}
-            alt="SVCDA logo"
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-xl object-cover shadow-md shadow-primary/20"
-            decoding="async"
-          />
+          <div className="h-12 w-12 overflow-hidden rounded-xl shadow-md shadow-primary/20">
+            <img
+              src={BRAND_LOGO_SRC}
+              alt="SVCDA logo"
+              width={48}
+              height={48}
+              className="h-full w-full origin-center scale-[3.4] object-contain"
+              decoding="async"
+            />
+          </div>
           <h1 className="text-2xl font-bold">Welcome Back</h1>
           <p className="text-sm text-muted-foreground">Sign in to your account</p>
         </div>

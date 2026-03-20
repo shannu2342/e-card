@@ -22,14 +22,16 @@ const Navbar = () => {
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass shadow-lg" : "bg-transparent border-b border-border/50"}`}>
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
-          <img
-            src={BRAND_LOGO_SRC}
-            alt="SVCDA logo"
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-xl object-cover shadow-md shadow-primary/20"
-            decoding="async"
-          />
+          <div className="h-10 w-10 overflow-hidden rounded-xl shadow-md shadow-primary/20">
+            <img
+              src={BRAND_LOGO_SRC}
+              alt="SVCDA logo"
+              width={40}
+              height={40}
+              className="h-full w-full origin-center scale-[3.2] object-contain"
+              decoding="async"
+            />
+          </div>
           <div className="hidden sm:block">
             <p className="font-display text-sm font-bold leading-tight text-foreground">Small Village & City</p>
             <p className="text-[11px] text-muted-foreground">Development Agency</p>
