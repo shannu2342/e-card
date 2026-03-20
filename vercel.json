@@ -1,0 +1,6 @@
+{
+  "framework": "vite",
+  "installCommand": "cd e-card-main && npm install",
+  "buildCommand": "cd e-card-main && npm run build",
+  "outputDirectory": "e-card-main/dist"
+}
